@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenMind — Prompt Engineering Challenge | QUANTARA '26</title>
+  <meta name="description" content="Rules and details for GenMind — Prompt Engineering Challenge event at QUANTARA '26, the flagship inter-college technical symposium by DEDOMENA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../logos/quantara-logo.webp" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .event-page-hero {
+      min-height: 55vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-h) + 3rem) var(--side-pad) 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .event-page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(168,85,247,0.1), transparent 70%),
+                  radial-gradient(ellipse at 80% 70%, rgba(0,212,255,0.07), transparent 60%);
+      pointer-events: none;
+    }
+    .event-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+    .event-hero-icon {
+      width: 80px; height: 80px;
+      border-radius: 20px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      background: rgba(168,85,247,0.15);
+      border: 1px solid rgba(168,85,247,0.3);
+      box-shadow: 0 0 30px rgba(168,85,247,0.15);
+    }
+    .event-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .event-hero-subtitle {
+      font-family: var(--font-sub);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1rem;
+    }
+    .event-hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .under-construction {
+      padding: 4rem var(--side-pad);
+      text-align: center;
+    }
+    .uc-card {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      border-color: rgba(168,85,247,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .uc-card::before {
+      content: '';
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168,85,247,0.06), transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .uc-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1.25rem;
+      display: block;
+      animation: uc-pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes uc-pulse {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    .uc-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    .uc-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .uc-actions {
+      display: flex;
+      gap: 0.85rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .event-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-sub);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0.6rem 1.1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+      min-height: 44px;
+    }
+    .event-back-link:hover {
+      color: var(--text-primary);
+      border-color: rgba(168,85,247,0.3);
+      background: rgba(168,85,247,0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particleCanvas"></canvas>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="../logos/quantara-logo.webp" alt="QUANTARA '26 Logo" class="nav-logo" />
+        <span class="nav-title">QUANTARA <span class="accent">'26</span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" class="nav-link" id="nav-home">Home</a></li>
+        <li><a href="../index.html#about" class="nav-link" id="nav-about">About</a></li>
+        <li><a href="../index.html#events" class="nav-link" id="nav-events">Events</a></li>
+        <li><a href="../index.html#coordinators" class="nav-link" id="nav-coordinators">Team</a></li>
+        <li><a href="../index.html#register" class="nav-link register-btn" id="nav-register">Register Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="event-page-hero">
+    <div class="event-hero-content">
+      <div class="event-hero-icon">🤖</div>
+      <h1 class="event-hero-title">GenMind</h1>
+      <p class="event-hero-subtitle">Prompt Engineering Challenge</p>
+      <p class="event-hero-desc">Demonstrate your ability to communicate effectively with Generative AI systems by designing intelligent prompts. Solo Participant.</p>
+    </div>
+  </section>
+
+  <section class="under-construction">
+    <div class="uc-card glass-card">
+      <span class="uc-icon">🚧</span>
+      <h2 class="uc-title">Page Under Construction</h2>
+      <p class="uc-desc">The detailed rules and guidelines for this event will be updated shortly. Stay tuned!</p>
+      <div class="uc-actions">
+        <a href="../index.html#events" class="event-back-link">← Back to Events</a>
+        <a href="https://forms.gle/RJf527dmuYpyG8vD8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Register Now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="footer-college">
+          <img src="../logos/patrician-logo.webp" alt="Patrician College" class="footer-college-logo" />
+          <div>
+            <p>Patrician College of Arts and Science</p>
+            <p>Gandhi Nagar, Adyar, Chennai – 600020</p>
+          </div>
+          <img src="../logos/25-years.webp" alt="25 Years Celebrating Legacy" class="footer-anni-logo" />
+        </div>
+        <p class="footer-copy">© 2026 DEDOMENA — Department of Computer Science with Data Science. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
