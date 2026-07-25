@@ -3,16 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cook the Code — Hackathon | QUANTARA '26</title>
-  <meta name="description" content="Rules and details for Cook the Code — Hackathon event at QUANTARA '26, the flagship inter-college technical symposium by DEDOMENA." />
+  <title>Cook the Code — Hackathon Rules | QUANTARA '26</title>
+  <meta name="description" content="Complete rule book for Cook the Code — Hackathon at QUANTARA '26. Team size, evaluation criteria, timelines and more." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="../logos/quantara-logo.webp" />
   <link rel="stylesheet" href="../style.css" />
   <style>
+    /* ── Hero ── */
     .event-page-hero {
-      min-height: 55vh;
+      min-height: 60vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -25,31 +26,33 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 30%, rgba(0,212,255,0.08), transparent 70%),
-                  radial-gradient(ellipse at 80% 70%, rgba(168,85,247,0.06), transparent 60%);
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(0,212,255,0.1), transparent 65%),
+        radial-gradient(ellipse at 80% 80%, rgba(168,85,247,0.07), transparent 55%);
       pointer-events: none;
     }
     .event-hero-content {
       position: relative;
       z-index: 1;
-      max-width: 680px;
+      max-width: 720px;
     }
     .event-hero-icon {
-      width: 80px; height: 80px;
-      border-radius: 20px;
+      width: 90px; height: 90px;
+      border-radius: 22px;
       display: inline-flex; align-items: center; justify-content: center;
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       margin-bottom: 1.5rem;
       background: rgba(0,212,255,0.13);
       border: 1px solid rgba(0,212,255,0.28);
-      box-shadow: 0 0 30px rgba(0,212,255,0.15);
+      box-shadow: 0 0 40px rgba(0,212,255,0.15), inset 0 0 20px rgba(0,212,255,0.05);
     }
     .event-hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-size: clamp(2.2rem, 7vw, 3.6rem);
       font-weight: 800;
       color: var(--text-primary);
       margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
     }
     .event-hero-subtitle {
       font-family: var(--font-sub);
@@ -66,56 +69,234 @@
       line-height: 1.7;
     }
 
-    .under-construction {
-      padding: 4rem var(--side-pad);
-      text-align: center;
+    /* ── Quick Info Strip ── */
+    .quick-info {
+      padding: 0 var(--side-pad);
+      margin-top: -2rem;
+      position: relative;
+      z-index: 2;
     }
-    .uc-card {
-      max-width: 560px;
+    .quick-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 3rem 2rem;
+    }
+    .qi-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.4rem;
+      padding: 1.25rem 1rem;
+      border-color: rgba(0,212,255,0.12);
+      background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(124,58,237,0.04));
+    }
+    .qi-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.15rem;
+    }
+    .qi-label {
+      font-family: var(--font-sub);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .qi-value {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* ── Content Sections ── */
+    .rules-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem var(--side-pad) 2rem;
+    }
+
+    .rules-block {
+      margin-bottom: 2.5rem;
+    }
+    .rules-block-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.15rem, 3vw, 1.4rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+    }
+    .rules-block-title .rb-icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.2);
+      flex-shrink: 0;
+    }
+
+    .rules-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      list-style: none;
+      counter-reset: rule-counter;
+    }
+    .rules-list li {
+      counter-increment: rule-counter;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .rules-list li:hover {
+      border-color: rgba(0,212,255,0.15);
+      background: rgba(0,212,255,0.03);
+    }
+    .rules-list li::before {
+      content: counter(rule-counter, decimal-leading-zero);
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--cyan);
+      opacity: 0.6;
+      flex-shrink: 0;
+      width: 24px;
+      padding-top: 2px;
+    }
+    .rule-text {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── Evaluation Grid ── */
+    .eval-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    .eval-card {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.3s ease;
+      flex: 0 1 calc(33.333% - 0.5rem);
+      min-width: 260px;
+    }
+    .eval-card:hover {
+      border-color: rgba(168,85,247,0.25);
+      background: rgba(168,85,247,0.04);
+      transform: translateY(-2px);
+    }
+    .eval-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      background: rgba(168,85,247,0.12);
+      border: 1px solid rgba(168,85,247,0.2);
+      flex-shrink: 0;
+    }
+    .eval-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+
+    /* ── Coordinators ── */
+
+
+    /* ── Important Notice ── */
+    .notice-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(245,158,11,0.06), rgba(245,158,11,0.02));
+      border: 1px solid rgba(245,158,11,0.18);
+      margin-bottom: 2.5rem;
+    }
+    .notice-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .notice-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .notice-text strong {
+      color: rgba(245,158,11,0.9);
+    }
+
+    /* ── CTA ── */
+    .event-cta {
+      text-align: center;
+      padding: 3rem var(--side-pad) 4rem;
+    }
+    .cta-card {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
       border-color: rgba(0,212,255,0.15);
       position: relative;
       overflow: hidden;
     }
-    .uc-card::before {
+    .cta-card::before {
       content: '';
       position: absolute;
-      width: 300px; height: 300px;
+      width: 350px; height: 350px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(0,212,255,0.06), transparent 70%);
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
-    .uc-icon {
-      font-size: 3.5rem;
-      margin-bottom: 1.25rem;
-      display: block;
-      animation: uc-pulse 2.5s ease-in-out infinite;
-    }
-    @keyframes uc-pulse {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.1); opacity: 1; }
-    }
-    .uc-title {
+    .cta-title {
       font-family: var(--font-heading);
       font-size: clamp(1.3rem, 4vw, 1.8rem);
       font-weight: 700;
       color: var(--text-primary);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
+      position: relative;
     }
-    .uc-desc {
-      font-size: 0.95rem;
+    .cta-desc {
+      font-size: 0.92rem;
       color: var(--text-secondary);
-      line-height: 1.7;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
     }
-    .uc-actions {
+    .cta-actions {
       display: flex;
       gap: 0.85rem;
       justify-content: center;
       flex-wrap: wrap;
+      position: relative;
     }
     .event-back-link {
       display: inline-flex;
@@ -138,6 +319,37 @@
       border-color: rgba(0,212,255,0.3);
       background: rgba(0,212,255,0.06);
     }
+
+    /* ── Divider ── */
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--gradient-brand);
+      margin: 0 auto 2.5rem;
+      opacity: 0.5;
+    }
+
+    /* ── Mobile adjustments ── */
+    @media (max-width: 600px) {
+      .quick-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .coord-strip {
+        flex-direction: column;
+        align-items: center;
+      }
+      .rules-list li {
+        padding: 0.85rem 1rem;
+      }
+      .cta-actions {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+      .hide-on-mobile {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -148,6 +360,7 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <div class="nav-brand">
+        <a href="../index.html#events" class="event-back-link hide-on-mobile" style="margin-right: 0.75rem; padding: 0.4rem 0.8rem; min-height: 36px; font-size: 0.75rem;">← Back</a>
         <img src="../logos/quantara-logo.webp" alt="QUANTARA '26 Logo" class="nav-logo" />
         <span class="nav-title">QUANTARA <span class="accent">'26</span></span>
       </div>
@@ -156,7 +369,7 @@
         <li><a href="../index.html#about" class="nav-link" id="nav-about">About</a></li>
         <li><a href="../index.html#events" class="nav-link" id="nav-events">Events</a></li>
         <li><a href="../index.html#coordinators" class="nav-link" id="nav-coordinators">Team</a></li>
-        <li><a href="../index.html#register" class="nav-link register-btn" id="nav-register">Register Now</a></li>
+        <li><a href="https://forms.gle/F56Jius7Eom4QaZ18" target="_blank" rel="noopener noreferrer" class="nav-link register-btn" id="nav-register">Register Now</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -164,26 +377,157 @@
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- ========== HERO ========== -->
   <section class="event-page-hero">
     <div class="event-hero-content">
       <div class="event-hero-icon">💻</div>
       <h1 class="event-hero-title">Cook the Code</h1>
       <p class="event-hero-subtitle">Hackathon</p>
       <p class="event-hero-desc">Design and develop innovative solutions to real-world problems within a limited time.</p>
-      <p class="event-hero-subtitle" style="margin-top:0.75rem">👥 Team of 4</p>
+      <p class="event-hero-subtitle" style="margin-top:0.75rem">🚀 Build. Innovate. Win.</p>
     </div>
   </section>
 
-  <!-- Under Construction -->
-  <section class="under-construction">
-    <div class="uc-card glass-card">
-      <span class="uc-icon">🚧</span>
-      <h2 class="uc-title">Page Under Construction</h2>
-      <p class="uc-desc">The detailed rules and guidelines for this event will be updated shortly. Stay tuned!</p>
-      <div class="uc-actions">
-        <a href="../index.html#events" class="event-back-link">← Back to Events</a>
-        <a href="https://forms.gle/F56Jius7Eom4QaZ18" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Register Now</a>
+  <!-- ========== QUICK INFO ========== -->
+  <section class="quick-info">
+    <div class="quick-info-grid">
+      <div class="qi-card glass-card">
+        <span class="qi-icon">📅</span>
+        <span class="qi-label">Date</span>
+        <span class="qi-value">28 August 2026</span>
+      </div>
+      <div class="qi-card glass-card">
+        <span class="qi-icon">⏰</span>
+        <span class="qi-label">Time</span>
+        <span class="qi-value">10:00 AM – 2:00 PM</span>
+      </div>
+      <div class="qi-card glass-card">
+        <span class="qi-icon">👥</span>
+        <span class="qi-label">Team Size</span>
+        <span class="qi-value">2 – 4 Members</span>
+      </div>
+      <div class="qi-card glass-card">
+        <span class="qi-icon">💰</span>
+        <span class="qi-label">Registration Fee</span>
+        <span class="qi-value">₹300 per team</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RULES CONTENT ========== -->
+  <div class="rules-content">
+
+    <!-- Important Notice -->
+    <div class="notice-card" style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
+      <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+        <span class="notice-icon">⚠️</span>
+        <p class="notice-text">
+          <strong>Problem Statement Release:</strong> The problem statement will be released on <strong>August 21, 2026</strong>. Teams must arrive on the event day with a <strong>fully completed prototype</strong> ready for demonstration and evaluation.
+        </p>
+      </div>
+    </div>
+
+    <!-- Event Rules -->
+    <div class="rules-block">
+      <h2 class="rules-block-title">
+        <span class="rb-icon">📋</span>
+        Event Rules
+      </h2>
+      <ol class="rules-list">
+        <li><span class="rule-text">Each team must consist of <strong>2 – 4 members</strong>.</span></li>
+        <li><span class="rule-text">The official problem statement will be released on <strong>August 21, 2026</strong> at <strong>11 AM</strong> on this website.</span></li>
+        <li><span class="rule-text">Teams must arrive on time for <strong>registration and verification</strong>.</span></li>
+        <li><span class="rule-text">Each team must bring a <strong>fully completed prototype</strong> based on the released problem statement.</span></li>
+        <li><span class="rule-text">The prototype should be <strong>ready for demonstration</strong> and evaluation.</span></li>
+        <li><span class="rule-text">Only <strong>registered participants</strong> are allowed to present.</span></li>
+        <li><span class="rule-text">Teams must bring their own <strong>laptops, chargers</strong> and required accessories.</span></li>
+        <li><span class="rule-text">Internet access, if provided, should be used <strong>only for demonstration purposes</strong>.</span></li>
+        <li><span class="rule-text">Teams must be prepared to explain the <strong>design, methodology</strong> and implementation.</span></li>
+        <li><span class="rule-text">Each presentation includes <strong>8 minutes for presenting</strong>, followed by <strong>4 minutes</strong> of Judges' Interaction &amp; Q&amp;A.</span></li>
+        <li><span class="rule-text">Judges' decision will be <strong>final and binding</strong>.</span></li>
+        <li><span class="rule-text">Any form of <strong>misconduct or unfair practices</strong> will result in disqualification.</span></li>
+        <li><span class="rule-text">Participants must maintain <strong>discipline and professional behavior</strong> throughout the event.</span></li>
+      </ol>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Evaluation Criteria -->
+    <div class="rules-block">
+      <h2 class="rules-block-title">
+        <span class="rb-icon" style="background:rgba(168,85,247,0.12);border-color:rgba(168,85,247,0.22)">🏆</span>
+        Evaluation Criteria
+      </h2>
+      <div class="eval-grid">
+        <div class="eval-card">
+          <div class="eval-icon">💡</div>
+          <span class="eval-label">Innovation &amp; Creativity</span>
+        </div>
+        <div class="eval-card">
+          <div class="eval-icon">🧩</div>
+          <span class="eval-label">Problem Solving</span>
+        </div>
+        <div class="eval-card">
+          <div class="eval-icon">⚙️</div>
+          <span class="eval-label">Prototype Functionality</span>
+        </div>
+        <div class="eval-card">
+          <div class="eval-icon">🔧</div>
+          <span class="eval-label">Technical Implementation</span>
+        </div>
+        <div class="eval-card">
+          <div class="eval-icon">🎤</div>
+          <span class="eval-label">Presentation &amp; Demo</span>
+        </div>
+        <div class="eval-card">
+          <div class="eval-icon">🌍</div>
+          <span class="eval-label">Impact &amp; Feasibility</span>
+        </div>
+        <div class="eval-card">
+          <div class="eval-icon">❓</div>
+          <span class="eval-label">Q&amp;A Session</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Coordinators -->
+    <div class="rules-block" style="text-align:center">
+      <h2 class="rules-block-title" style="justify-content:center">
+        <span class="rb-icon" style="background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.22)">📞</span>
+        Event Coordinators
+      </h2>
+      <div class="coord-strip">
+        <div class="coord-chip">
+          <div class="cc-avatar">VK</div>
+          <div class="cc-info">
+            <span class="cc-role">Event Coordinator</span>
+            <span class="cc-name">Vasikaran A</span>
+            <a href="tel:9360531897" class="cc-phone">📞 9360531897</a>
+          </div>
+        </div>
+        <div class="coord-chip">
+          <div class="cc-avatar">S</div>
+          <div class="cc-info">
+            <span class="cc-role">Event Coordinator</span>
+            <span class="cc-name">Suruthi M S</span>
+            <a href="tel:9941371688" class="cc-phone">📞 9941371688</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ========== CTA ========== -->
+  <section class="event-cta">
+    <div class="cta-card glass-card">
+      <h2 class="cta-title">Ready to <span class="gradient-text">Build?</span></h2>
+      <p class="cta-desc">Register your team now and get ready to cook some code at QUANTARA '26!</p>
+      <div class="cta-actions">
+        <a href="problem-statement.html" class="btn btn-primary" style="flex: 1; min-width: 220px; max-width: 280px; justify-content: center;">Problem Statement</a>
+        <a href="https://forms.gle/F56Jius7Eom4QaZ18" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex: 1; min-width: 220px; max-width: 280px; justify-content: center;">Register Now</a>
       </div>
     </div>
   </section>
