@@ -812,6 +812,116 @@ button{font-family:inherit;cursor:pointer}
 .dept-year{display:block;font-family:var(--font-heading);font-size:1.5rem;font-weight:700;color:var(--cyan);margin-top:0.2rem}
 
 /* ============================================
+   GENERAL INSTRUCTIONS
+   ============================================ */
+.general-rules-section{padding-bottom:4rem}
+
+.rules-wrapper{
+  padding:2.5rem;
+  border-radius:var(--radius-lg);
+  border:1px solid rgba(0,212,255,0.12);
+  background:rgba(10,15,46,0.6);
+  backdrop-filter:blur(14px);
+}
+
+.rules-banner{
+  display:flex;
+  align-items:flex-start;
+  gap:1.25rem;
+  padding:1.5rem;
+  margin-bottom:2rem;
+  border-radius:var(--radius-md);
+  background:linear-gradient(135deg,rgba(0,212,255,0.08) 0%,rgba(124,58,237,0.08) 100%);
+  border:1px solid rgba(0,212,255,0.15);
+}
+.rules-banner-icon{
+  font-size:2.2rem;
+  flex-shrink:0;
+  margin-top:0.15rem;
+}
+.rules-banner h3{
+  font-family:var(--font-heading);
+  font-size:1rem;
+  font-weight:700;
+  color:var(--text-primary);
+  letter-spacing:0.04em;
+  margin-bottom:0.4rem;
+}
+.rules-banner p{
+  font-size:0.9rem;
+  color:var(--text-secondary);
+  line-height:1.6;
+}
+
+.general-rules-section .rules-list{
+  list-style:none;
+  counter-reset:rule-counter;
+  padding:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+}
+.general-rules-section .rules-list li{
+  counter-increment:rule-counter;
+  padding:1rem 1rem 1rem 3.5rem;
+  position:relative;
+  font-size:0.92rem;
+  color:var(--text-secondary);
+  line-height:1.65;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.general-rules-section .rules-list li:last-child{border-bottom:none}
+.general-rules-section .rules-list li::before{
+  content:counter(rule-counter,decimal-leading-zero);
+  position:absolute;
+  left:0.75rem;
+  top:1rem;
+  font-family:var(--font-heading);
+  font-size:0.8rem;
+  font-weight:700;
+  color:var(--cyan);
+  opacity:0.7;
+}
+.general-rules-section .rules-list li:hover{
+  background:rgba(0,212,255,0.04);
+  color:var(--text-primary);
+}
+.general-rules-section .rules-list li:hover::before{opacity:1}
+.general-rules-section .rules-list li strong{color:var(--text-primary)}
+
+.rules-footer-note{
+  margin-top:2rem;
+  padding:1.5rem;
+  text-align:center;
+  border-radius:var(--radius-md);
+  background:linear-gradient(135deg,rgba(0,212,255,0.06) 0%,rgba(168,85,247,0.06) 100%);
+  border:1px solid rgba(255,255,255,0.06);
+}
+.rules-wish{
+  font-family:var(--font-heading);
+  font-size:1.1rem;
+  font-weight:700;
+  color:var(--text-primary);
+  margin-bottom:0.5rem;
+}
+.rules-footer-note>p{
+  font-size:0.9rem;
+  color:var(--text-secondary);
+  line-height:1.6;
+}
+.rules-motto{
+  margin-top:0.75rem;
+  font-size:1rem;
+  font-weight:600;
+  background:var(--gradient-brand);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 .footer{
@@ -969,6 +1079,15 @@ button{font-family:inherit;cursor:pointer}
   .dedomena-list{align-items:center}
   .dedomena-list li{justify-content:center}
   .dept-established{text-align:center}
+
+  /* General Instructions */
+  .rules-wrapper{padding:1.25rem}
+  .rules-banner{flex-direction:column;gap:0.75rem;padding:1rem}
+  .rules-banner-icon{font-size:1.6rem}
+  .general-rules-section .rules-list li{padding:0.85rem 0.75rem 0.85rem 2.8rem;font-size:0.85rem}
+  .general-rules-section .rules-list li::before{left:0.5rem;font-size:0.7rem}
+  .rules-footer-note{padding:1rem}
+  .rules-wish{font-size:0.95rem}
 
   /* Footer */
   .footer-top{grid-template-columns:1fr;gap:1.5rem}
