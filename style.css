@@ -977,9 +977,14 @@ button{font-family:inherit;cursor:pointer}
   .about-text   { grid-column:auto; grid-row:auto; }
   .about-highlights{ grid-column:auto; grid-row:auto; }
   .about-cards  { grid-column:auto; grid-row:auto; grid-template-columns:1fr 1fr; }
-  .footer-top{grid-template-columns:1fr 1fr;gap:1.5rem}
-  .dedomena-wrap{grid-template-columns:1fr;gap:1.75rem;padding:2rem}
+  .footer-top{grid-template-columns:1fr;gap:2.5rem}
+  .footer-links-col{align-items:center;text-align:center}
+  .footer-links-col a{justify-content:center}
+  .dedomena-wrap{grid-template-columns:1fr;gap:1.75rem;padding:2rem;text-align:center}
   .dedomena-right{padding-top:0}
+  .dedomena-list{align-items:center}
+  .dedomena-list li{justify-content:center}
+  .dept-established{text-align:center}
 }
 
 /* ============================================
