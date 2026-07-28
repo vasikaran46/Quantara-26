@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cook the Code — Hackathon Rules | QUANTARA '26</title>
+  <title>Cook the Code — Hackathon | QUANTARA '26</title>
   <meta name="description" content="Complete rule book for Cook the Code — Hackathon at QUANTARA '26. Team size, evaluation criteria, timelines and more." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="../logos/quantara-logo.webp" />
+  <link rel="icon" type="image/png" href="../logos/quantara-logo.png" />
   <link rel="stylesheet" href="../style.css" />
   <style>
     /* ── Hero ── */
     .event-page-hero {
-      min-height: 60vh;
+      min-height: 65vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -31,24 +31,39 @@
         radial-gradient(ellipse at 80% 80%, rgba(168,85,247,0.07), transparent 55%);
       pointer-events: none;
     }
+    .event-page-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to top, var(--bg-primary), transparent);
+      pointer-events: none;
+    }
     .event-hero-content {
       position: relative;
       z-index: 1;
       max-width: 720px;
     }
     .event-hero-icon {
-      width: 90px; height: 90px;
-      border-radius: 22px;
+      width: 100px; height: 100px;
+      border-radius: 26px;
       display: inline-flex; align-items: center; justify-content: center;
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 1.5rem;
       background: rgba(0,212,255,0.13);
       border: 1px solid rgba(0,212,255,0.28);
-      box-shadow: 0 0 40px rgba(0,212,255,0.15), inset 0 0 20px rgba(0,212,255,0.05);
+      box-shadow: 0 0 50px rgba(0,212,255,0.18), inset 0 0 25px rgba(0,212,255,0.05);
+      animation: icon-glow 3s ease-in-out infinite;
+    }
+    @keyframes icon-glow {
+      0%, 100% { box-shadow: 0 0 50px rgba(0,212,255,0.18), inset 0 0 25px rgba(0,212,255,0.05); }
+      50% { box-shadow: 0 0 70px rgba(0,212,255,0.25), inset 0 0 30px rgba(0,212,255,0.08); }
     }
     .event-hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 7vw, 3.6rem);
+      font-size: clamp(2.4rem, 7vw, 3.8rem);
       font-weight: 800;
       color: var(--text-primary);
       margin-bottom: 0.4rem;
@@ -64,9 +79,33 @@
       margin-bottom: 1rem;
     }
     .event-hero-desc {
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: var(--text-secondary);
       line-height: 1.7;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .hero-badge-strip {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 20px;
+      font-family: var(--font-sub);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.18);
+      color: var(--cyan);
     }
 
     /* ── Quick Info Strip ── */
@@ -92,6 +131,11 @@
       padding: 1.25rem 1rem;
       border-color: rgba(0,212,255,0.12);
       background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(124,58,237,0.04));
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .qi-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,212,255,0.25);
     }
     .qi-icon {
       font-size: 1.6rem;
@@ -161,11 +205,12 @@
       border-radius: var(--radius-md);
       background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.05);
-      transition: border-color 0.3s ease, background 0.3s ease;
+      transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s ease;
     }
     .rules-list li:hover {
       border-color: rgba(0,212,255,0.15);
       background: rgba(0,212,255,0.03);
+      transform: translateX(4px);
     }
     .rules-list li::before {
       content: counter(rule-counter, decimal-leading-zero);
@@ -184,6 +229,50 @@
       line-height: 1.65;
     }
 
+    /* ── Presentation Format Card ── */
+    .format-card {
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(0,212,255,0.04), rgba(124,58,237,0.03));
+      border: 1px solid rgba(0,212,255,0.12);
+      margin-bottom: 1.5rem;
+    }
+    .format-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .format-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.3rem;
+      padding: 0.85rem 0.5rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.3s ease, transform 0.2s ease;
+    }
+    .format-stat:hover {
+      border-color: rgba(0,212,255,0.18);
+      transform: translateY(-2px);
+    }
+    .format-stat-value {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .format-stat-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
     /* ── Evaluation Grid ── */
     .eval-grid {
       display: flex;
@@ -200,21 +289,22 @@
       background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.05);
       transition: all 0.3s ease;
-      flex: 0 1 calc(33.333% - 0.5rem);
-      min-width: 260px;
+      flex: 0 1 calc(25% - 0.6rem);
+      min-width: 190px;
     }
     .eval-card:hover {
       border-color: rgba(168,85,247,0.25);
       background: rgba(168,85,247,0.04);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(168,85,247,0.08);
     }
     .eval-icon {
-      width: 36px; height: 36px;
-      border-radius: 10px;
+      width: 40px; height: 40px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       background: rgba(168,85,247,0.12);
       border: 1px solid rgba(168,85,247,0.2);
       flex-shrink: 0;
@@ -226,8 +316,72 @@
       line-height: 1.35;
     }
 
-    /* ── Coordinators ── */
-
+    /* ── Timeline Section ── */
+    .timeline-wrap {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(0,212,255,0.4), rgba(168,85,247,0.4));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .timeline-item:hover {
+      border-color: rgba(0,212,255,0.15);
+      background: rgba(0,212,255,0.03);
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 1.6rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--cyan);
+      border: 2px solid var(--bg-primary);
+      box-shadow: 0 0 12px rgba(0,212,255,0.4);
+      z-index: 1;
+    }
+    .timeline-item:last-child::after {
+      display: none;
+    }
+    .tl-time {
+      font-family: var(--font-sub);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    .tl-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .tl-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
 
     /* ── Important Notice ── */
     .notice-card {
@@ -260,9 +414,9 @@
       padding: 3rem var(--side-pad) 4rem;
     }
     .cta-card {
-      max-width: 620px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 2.5rem 2rem;
+      padding: 3rem 2.5rem;
       border-color: rgba(0,212,255,0.15);
       position: relative;
       overflow: hidden;
@@ -270,25 +424,34 @@
     .cta-card::before {
       content: '';
       position: absolute;
-      width: 350px; height: 350px;
+      width: 400px; height: 400px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(0,212,255,0.06), transparent 70%);
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
+    .cta-card::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(168,85,247,0.04), transparent 70%);
+      top: -50px; right: -50px;
+      pointer-events: none;
+    }
     .cta-title {
       font-family: var(--font-heading);
-      font-size: clamp(1.3rem, 4vw, 1.8rem);
+      font-size: clamp(1.4rem, 4vw, 2rem);
       font-weight: 700;
       color: var(--text-primary);
       margin-bottom: 0.5rem;
       position: relative;
     }
     .cta-desc {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       color: var(--text-secondary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
       position: relative;
     }
     .cta-actions {
@@ -342,12 +505,29 @@
       .rules-list li {
         padding: 0.85rem 1rem;
       }
+      .rules-list li:hover {
+        transform: none;
+      }
       .cta-actions {
         flex-direction: column-reverse;
         align-items: center;
       }
       .hide-on-mobile {
         display: none !important;
+      }
+      .eval-card {
+        flex: 0 1 calc(50% - 0.4rem);
+        min-width: 140px;
+      }
+      .format-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-badge-strip {
+        gap: 0.4rem;
+      }
+      .hero-badge {
+        font-size: 0.6rem;
+        padding: 0.3rem 0.65rem;
       }
     }
   </style>
@@ -366,7 +546,7 @@
       </div>
       <ul class="nav-links" id="navLinks">
         <li><a href="../index.html" class="nav-link" id="nav-home">Home</a></li>
-        <li><a href="../index.html#about" class="nav-link" id="nav-about">About</a></li>
+        <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
         <li><a href="#rules" class="nav-link" id="nav-rules">Rules</a></li>
         <li><a href="#coordinators" class="nav-link" id="nav-coordinators">Team</a></li>
         <li><a href="https://forms.gle/F56Jius7Eom4QaZ18" target="_blank" rel="noopener noreferrer" class="nav-link register-btn" id="nav-register">Register Now</a></li>
@@ -383,13 +563,17 @@
       <div class="event-hero-icon">💻</div>
       <h1 class="event-hero-title">Cook the Code</h1>
       <p class="event-hero-subtitle">Hackathon</p>
-      <p class="event-hero-desc">Design and develop innovative solutions to real-world problems within a limited time.</p>
-      <p class="event-hero-subtitle" style="margin-top:0.75rem">🚀 Build. Innovate. Win.</p>
+      <p class="event-hero-desc">Design and develop innovative solutions to real-world problems. Arrive with a fully built prototype and demonstrate your skills before expert judges.</p>
+      <div class="hero-badge-strip">
+        <span class="hero-badge">🚀 Build</span>
+        <span class="hero-badge">💡 Innovate</span>
+        <span class="hero-badge">🏆 Win</span>
+      </div>
     </div>
   </section>
 
   <!-- ========== QUICK INFO ========== -->
-  <section class="quick-info">
+  <section class="quick-info" id="about">
     <div class="quick-info-grid">
       <div class="qi-card glass-card">
         <span class="qi-icon">📅</span>
@@ -399,7 +583,7 @@
       <div class="qi-card glass-card">
         <span class="qi-icon">⏰</span>
         <span class="qi-label">Time</span>
-        <span class="qi-value">9:00 AM – 2:00 PM</span>
+        <span class="qi-value">8:30 AM – 2:00 PM</span>
       </div>
       <div class="qi-card glass-card">
         <span class="qi-icon">👥</span>
@@ -422,7 +606,7 @@
       <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
         <span class="notice-icon">⚠️</span>
         <p class="notice-text">
-          <strong>Problem Statement Release:</strong> The problem statement will be released on <strong>August 21, 2026</strong>. Teams must arrive on the event day with a <strong>fully completed prototype</strong> ready for demonstration and evaluation.
+          <strong>Problem Statement Release:</strong> The problem statement will be released on <strong>August 21, 2026</strong> at <strong>11:00 AM</strong> on this website. Teams must arrive on the event day with a <strong>fully completed prototype</strong> ready for demonstration and evaluation.
         </p>
       </div>
     </div>
@@ -436,7 +620,7 @@
       <ol class="rules-list">
         <li><span class="rule-text">Each team must consist of <strong>2 – 4 members</strong>.</span></li>
         <li><span class="rule-text">The official problem statement will be released on <strong>August 21, 2026</strong> at <strong>11 AM</strong> on this website.</span></li>
-        <li><span class="rule-text">Teams must arrive on time for <strong>registration and verification</strong>.</span></li>
+        <li><span class="rule-text">Teams must arrive <strong>before 8:30 AM</strong> for registration and verification.</span></li>
         <li><span class="rule-text">Each team must bring a <strong>fully completed prototype</strong> based on the released problem statement.</span></li>
         <li><span class="rule-text">The prototype should be <strong>ready for demonstration</strong> and evaluation.</span></li>
         <li><span class="rule-text">Only <strong>registered participants</strong> are allowed to present.</span></li>
@@ -448,6 +632,79 @@
         <li><span class="rule-text">Any form of <strong>misconduct or unfair practices</strong> will result in disqualification.</span></li>
         <li><span class="rule-text">Participants must maintain <strong>discipline and professional behavior</strong> throughout the event.</span></li>
       </ol>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Presentation Format -->
+    <div class="rules-block">
+      <h2 class="rules-block-title">
+        <span class="rb-icon" style="background:rgba(0,212,255,0.1);border-color:rgba(0,212,255,0.2)">🎯</span>
+        Presentation Format
+      </h2>
+      <div class="format-card glass-card">
+        <ol class="rules-list">
+          <li><span class="rule-text">Teams will present their <strong>prototype and solution</strong> to the judging panel.</span></li>
+          <li><span class="rule-text">The presentation must include a <strong>live demonstration</strong> of the working prototype.</span></li>
+          <li><span class="rule-text">Explain the <strong>problem approach, tech stack, design decisions</strong>, and implementation details.</span></li>
+          <li><span class="rule-text">Be prepared for a <strong>Q&amp;A session</strong> where judges will assess your depth of understanding.</span></li>
+        </ol>
+        <div class="format-stats">
+          <div class="format-stat">
+            <span class="format-stat-value">8 min</span>
+            <span class="format-stat-label">Presentation</span>
+          </div>
+          <div class="format-stat">
+            <span class="format-stat-value">4 min</span>
+            <span class="format-stat-label">Q&amp;A Session</span>
+          </div>
+          <div class="format-stat">
+            <span class="format-stat-value">12 min</span>
+            <span class="format-stat-label">Total Per Team</span>
+          </div>
+          <div class="format-stat">
+            <span class="format-stat-value">2–4</span>
+            <span class="format-stat-label">Team Members</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Event Timeline -->
+    <div class="rules-block">
+      <h2 class="rules-block-title">
+        <span class="rb-icon" style="background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.22)">📅</span>
+        Event Timeline
+      </h2>
+      <div class="timeline-wrap">
+        <div class="timeline-item">
+          <span class="tl-time">August 21, 2026 · 11:00 AM</span>
+          <div class="tl-title">Problem Statement Released</div>
+          <div class="tl-desc">The official problem statement goes live on this website. Start building your prototype.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-time">August 28, 2026 · Before 8:30 AM</span>
+          <div class="tl-title">Report to Campus &amp; Registration</div>
+          <div class="tl-desc">Arrive at Patrician College with your team and complete on-site registration.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-time">8:30 AM – 9:00 AM</span>
+          <div class="tl-title">Inauguration Ceremony</div>
+          <div class="tl-desc">Join us for the grand inauguration ceremony of QUANTARA '26.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-time">9:15 AM onwards</span>
+          <div class="tl-title">Presentations Begin</div>
+          <div class="tl-desc">Teams present their prototype (8 min) followed by judges' Q&amp;A (4 min).</div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-time">2:00 PM</span>
+          <div class="tl-title">Results &amp; Awards</div>
+          <div class="tl-desc">Winners announced and prizes distributed at the closing ceremony.</div>
+        </div>
+      </div>
     </div>
 
     <div class="section-divider"></div>
@@ -473,7 +730,7 @@
         </div>
         <div class="eval-card">
           <div class="eval-icon">🔧</div>
-          <span class="eval-label">Technical Implementation</span>
+          <span class="eval-label">Technical Execution</span>
         </div>
         <div class="eval-card">
           <div class="eval-icon">🎤</div>
@@ -491,6 +748,16 @@
     </div>
 
     <div class="section-divider"></div>
+
+    <!-- Judge's Decision -->
+    <div class="notice-card" style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
+      <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+        <span class="notice-icon">⚖️</span>
+        <p class="notice-text">
+          <strong>Final Evaluation:</strong> The judging panel's decision shall be <strong>final and binding</strong>. In case of a tie, additional criteria such as innovation depth, code quality, and feasibility of the solution may be considered. The organizing committee reserves the right to modify the event format if required.
+        </p>
+      </div>
+    </div>
 
     <!-- Coordinators -->
     <div class="rules-block" style="text-align:center" id="coordinators">
