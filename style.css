@@ -1087,7 +1087,7 @@ button{font-family:inherit;cursor:pointer}
 
   /* General Instructions */
   .rules-wrapper{padding:1.25rem}
-  .rules-banner{flex-direction:column;gap:0.75rem;padding:1rem}
+  .rules-banner{flex-direction:column;gap:0.75rem;padding:1rem;align-items:center;text-align:center}
   .rules-banner-icon{font-size:1.6rem}
   .general-rules-section .rules-list li{padding:0.85rem 0.75rem 0.85rem 2.8rem;font-size:0.85rem}
   .general-rules-section .rules-list li::before{left:0.5rem;font-size:0.7rem}
