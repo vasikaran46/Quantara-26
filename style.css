@@ -28,9 +28,9 @@
   --shadow-purple:  0 0 40px rgba(124,58,237,0.2);
   --shadow-card:    0 8px 32px rgba(0,0,0,0.45);
 
-  --font-heading: 'Orbitron', monospace;
-  --font-sub:     'Rajdhani', sans-serif;
-  --font-body:    'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+  --font-sub:     'Lato', sans-serif;
+  --font-body:    'Lato', sans-serif;
 
   --radius-sm:  8px;
   --radius-md:  14px;
@@ -500,8 +500,9 @@ button{font-family:inherit;cursor:pointer}
   color:var(--text-muted);
 }
 
-.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem}
+.about-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:0.85rem}
 .info-card{
+  flex: 1 1 calc(33.333% - 0.85rem); min-width: 200px;
   display:flex;align-items:center;gap:0.75rem;padding:0.85rem 1.25rem;height:100%;
   transition: border-color 0.3s ease;
 }
@@ -515,7 +516,58 @@ button{font-family:inherit;cursor:pointer}
   letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);
   opacity:0.9; margin-bottom: 0.15rem;
 }
-.info-value{font-size:0.9rem;font-weight:600;color:var(--text-primary)}
+.info-value{font-size:0.9rem;font-weight:600;color:var(--text-primary);white-space:nowrap;}
+
+
+
+/* Eligibility Boxes */
+.eligibility-box-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem auto;
+  max-width: 560px;
+  text-align: left;
+}
+.eligibility-box {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius-md);
+  transition: transform var(--t-base) var(--ease), border-color var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease);
+}
+.eligibility-box:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 212, 255, 0.3);
+  box-shadow: var(--shadow-cyan);
+}
+.eligibility-box-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 10px rgba(124, 58, 237, 0.4));
+}
+.eligibility-box-text {
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+.eligibility-box-text strong {
+  color: var(--cyan);
+}
+
+@media (max-width: 768px) {
+  .eligibility-box {
+    padding: 1rem 1.2rem;
+    gap: 1rem;
+  }
+  .eligibility-box-icon {
+    font-size: 1.5rem;
+  }
+  .eligibility-box-text {
+    font-size: 0.95rem;
+  }
+}
 
 /* Why participate */
 .why-participate{margin-top:0.5rem}
@@ -1058,8 +1110,8 @@ button{font-family:inherit;cursor:pointer}
 
   /* About */
   .about-grid{gap:1.75rem}
-  .about-cards{grid-template-columns:1fr}
-  .info-card{flex-direction:column;text-align:center;gap:0.5rem;padding:1.5rem 1rem;}
+  .about-cards{flex-direction:column;gap:0.65rem; align-items:center;}
+  .info-card{flex-direction:column;text-align:center;gap:0.4rem;padding:1rem 0.75rem; width: 100%; max-width: 320px;}
   .info-content{align-items:center;}
   .about-highlights{gap:1.25rem}
   .highlight-number{font-size:2rem}
