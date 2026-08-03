@@ -609,6 +609,18 @@ button{font-family:inherit;cursor:pointer}
   gap:1.25rem;
 }
 
+@media (min-width: 768px) {
+  .events-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .events-grid > .event-card {
+    flex: 0 0 calc((100% - 3.75rem) / 4);
+    max-width: calc((100% - 3.75rem) / 4);
+  }
+}
+
 .event-card{
   padding:1.6rem;
   position:relative;overflow:hidden;
@@ -647,6 +659,11 @@ button{font-family:inherit;cursor:pointer}
 }
 /* We'll use data attributes instead of color-mix for better compat */
 .event-icon{font-size:1.4rem}
+.event-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
 
 .event-number{
   font-family:var(--font-heading);
@@ -704,15 +721,7 @@ button{font-family:inherit;cursor:pointer}
   box-shadow:0 0 16px rgba(0,212,255,0.2);
 }
 
-/* Center GenMind (7th/last event card) on desktop when alone on last row */
-@media(min-width:641px){
-  #event-genmind{
-    grid-column:1/-1;
-    max-width:380px;
-    margin:0 auto;
-    width:100%;
-  }
-}
+/* Removed GenMind specific centering as flexbox handles it on desktop */
 /* ============================================
    REGISTER SECTION
    ============================================ */
