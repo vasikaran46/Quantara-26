@@ -417,6 +417,44 @@
       background: rgba(124,58,237,0.06);
     }
 
+    /* ── Submission Card ── */
+    .submission-card {
+      padding: 2rem;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(0,212,255,0.04), rgba(124,58,237,0.03));
+      border: 1px solid rgba(0,212,255,0.15);
+      margin-bottom: 1.5rem;
+    }
+    .sub-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+    .sub-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.4rem;
+      padding: 1rem 0.5rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .sub-stat-value {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .sub-stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
     /* ── Divider ── */
     .section-divider {
       width: 60px;
@@ -431,6 +469,15 @@
     @media (max-width: 1024px) {
       .quick-info-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .sub-stats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .sub-stats .sub-stat {
+        flex: 0 1 calc(50% - 0.6rem);
+        width: calc(50% - 0.6rem);
       }
     }
     @media (max-width: 600px) {
@@ -466,6 +513,14 @@
       }
       .hide-on-mobile {
         display: none !important;
+      }
+      .sub-stats {
+        display: flex;
+        flex-direction: column;
+      }
+      .sub-stats .sub-stat {
+        width: 100%;
+        flex: 1 1 100%;
       }
     }
   </style>
@@ -511,8 +566,13 @@
     <div class="quick-info-grid">
       <div class="qi-card glass-card">
         <span class="qi-icon">📅</span>
-        <span class="qi-label">Date</span>
+        <span class="qi-label">Event Date</span>
         <span class="qi-value">28 August 2026</span>
+      </div>
+      <div class="qi-card glass-card">
+        <span class="qi-icon">⏰</span>
+        <span class="qi-label">Deadline</span>
+        <span class="qi-value">26 Aug, 5:30 PM</span>
       </div>
       <div class="qi-card glass-card">
         <span class="qi-icon">👤</span>
@@ -523,11 +583,6 @@
         <span class="qi-icon">🎯</span>
         <span class="qi-label">Themes</span>
         <span class="qi-value">Choose 1 of 4</span>
-      </div>
-      <div class="qi-card glass-card">
-        <span class="qi-icon">📝</span>
-        <span class="qi-label">Max Prompts</span>
-        <span class="qi-value">5 Allowed</span>
       </div>
     </div>
   </section>
@@ -595,6 +650,8 @@
         <li><span class="rule-text">Prompt must include: <strong>Role + Task + Context + Output Format + Constraints</strong>.</span></li>
         <li><span class="rule-text">Only <strong>AI-generated content created during the event</strong> is allowed.</span></li>
         <li><span class="rule-text">No <strong>plagiarism or pre-generated images</strong>.</span></li>
+        <li><span class="rule-text">Entries must be submitted on or before <strong>5:30 PM, 26 August 2026</strong>.</span></li>
+        <li><span class="rule-text">Results will be announced on <strong>27 August 2026</strong>.</span></li>
         <li><span class="rule-text">Judges' decision is <strong>final</strong>.</span></li>
       </ol>
     </div>
@@ -676,6 +733,36 @@
         <p class="notice-text">
           <strong>Penalty:</strong> Using more than <strong>5 prompts</strong> will result in marks being deducted for each additional prompt. Pre-generated images are strictly <strong>not allowed</strong> and only AI-generated content created during the event is accepted.
         </p>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Submission Details -->
+    <div class="rules-block">
+      <h2 class="rules-block-title">
+        <span class="rb-icon" style="background:rgba(0,212,255,0.1);border-color:rgba(0,212,255,0.2)">📤</span>
+        Submission Details
+      </h2>
+      <div class="submission-card glass-card">
+        <ol class="rules-list" style="margin-bottom: 1.5rem;">
+          <li><span class="rule-text">Submit a <strong>screenshot of all prompts</strong> used and the <strong>final AI-generated image</strong>.</span></li>
+          <li><span class="rule-text">Submissions must be made via the official <strong>Google Form</strong> provided to registered participants.</span></li>
+        </ol>
+        <div class="sub-stats">
+          <div class="sub-stat">
+            <span class="sub-stat-value">26 August 2026</span>
+            <span class="sub-stat-label">Submission Date</span>
+          </div>
+          <div class="sub-stat">
+            <span class="sub-stat-value">5:30 PM</span>
+            <span class="sub-stat-label">Submission Time</span>
+          </div>
+          <div class="sub-stat">
+            <span class="sub-stat-value">27 August 2026</span>
+            <span class="sub-stat-label">Results Announced</span>
+          </div>
+        </div>
       </div>
     </div>
 
