@@ -356,6 +356,73 @@
       background: rgba(236,72,153,0.06);
     }
 
+    /* ── Timeline Section ── */
+    .timeline-wrap {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(0,212,255,0.4), rgba(168,85,247,0.4));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+    .timeline-item:hover {
+      border-color: rgba(0,212,255,0.15);
+      background: rgba(0,212,255,0.03);
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 1.6rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--cyan);
+      border: 2px solid var(--bg-primary);
+      box-shadow: 0 0 12px rgba(0,212,255,0.4);
+      z-index: 1;
+    }
+    .timeline-item:last-child::after {
+      display: none;
+    }
+    .tl-time {
+      font-family: var(--font-sub);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.3rem;
+      display: block;
+    }
+    .tl-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .tl-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
     /* ── Divider ── */
     .section-divider {
       width: 60px;
@@ -404,6 +471,7 @@
         width: 100%;
         flex: 1 1 100%;
       }
+
     }
   </style>
 </head>
@@ -534,6 +602,40 @@
         </p>
       </div>
     </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Event Timeline -->
+    <div class="rules-block">
+      <h2 class="rules-block-title">
+        <span class="rb-icon" style="background:rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.2)">🗓️</span>
+        Event Timeline
+      </h2>
+      <div class="timeline-wrap">
+        <div class="timeline-item">
+          <span class="tl-time">Now — 26 August 2026</span>
+          <div class="tl-title">Registration Opens</div>
+          <div class="tl-desc">Register via the official Google Form to participate.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-time">26 August 2026 · 5:30 PM</span>
+          <div class="tl-title">Submission Deadline</div>
+          <div class="tl-desc">Submit your poster via Google Form before the deadline. Late entries will not be accepted.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-time">27 August 2026</span>
+          <div class="tl-title">Results Announced</div>
+          <div class="tl-desc">Results will be published on the official event website.</div>
+        </div>
+        <div class="timeline-item">
+          <span class="tl-time">28 August 2026</span>
+          <div class="tl-title">Valediction &amp; Prize Distribution</div>
+          <div class="tl-desc">Winners will be honored at the valediction ceremony during QUANTARA '26.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
 
     <!-- Coordinators -->
     <div class="rules-block" style="text-align:center">
