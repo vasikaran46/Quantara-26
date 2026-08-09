@@ -78,6 +78,11 @@
       color: var(--text-secondary);
       line-height: 1.7;
     }
+    .mobile-register-btn {
+      display: none;
+      margin-top: 0.8rem;
+      box-shadow: 0 0 25px rgba(0,212,255,0.35), 0 0 60px rgba(0,212,255,0.15), 0 4px 15px rgba(0,0,0,0.3);
+    }
 
     /* ── Quick Info Strip ── */
     .quick-info {
@@ -424,6 +429,9 @@
       .round-stats {
         grid-template-columns: repeat(2, 1fr);
       }
+      .mobile-register-btn {
+        display: inline-flex;
+      }
     }
   </style>
 </head>
@@ -460,6 +468,7 @@
       <p class="event-hero-subtitle">Debugging</p>
       <p class="event-hero-desc">Identify and fix errors in Python programs under time constraints. A two-round challenge that tests your precision, logic, and speed.</p>
       <p class="event-hero-subtitle" style="margin-top:0.75rem">🔍 Spot. Fix. Conquer.</p>
+      <a href="https://forms.gle/XWgSEUHi15jCZegK6" target="_blank" rel="noopener noreferrer" class="btn btn-primary mobile-register-btn" id="hero-mobile-register">Register Now</a>
     </div>
   </section>
 

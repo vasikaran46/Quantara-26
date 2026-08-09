@@ -78,6 +78,11 @@
       color: var(--text-secondary);
       line-height: 1.7;
     }
+    .mobile-register-btn {
+      display: none;
+      margin-top: 0.8rem;
+      box-shadow: 0 0 25px rgba(0,212,255,0.35), 0 0 60px rgba(0,212,255,0.15), 0 4px 15px rgba(0,0,0,0.3);
+    }
 
     /* ── Quick Info Strip ── */
     .quick-info {
@@ -472,6 +477,9 @@
         flex: 1 1 100%;
       }
 
+      .mobile-register-btn {
+        display: inline-flex;
+      }
     }
   </style>
 </head>
@@ -508,6 +516,7 @@
       <p class="event-hero-subtitle">Creative Arts</p>
       <p class="event-hero-desc">Unleash your creativity and design a powerful poster on Cyber Security. Let your art speak for digital safety.</p>
       <p class="event-hero-subtitle" style="margin-top:0.75rem">🖌️ Think. Design. Inspire.</p>
+      <a href="https://forms.gle/xi9LrcSHXQjbvgHw5" target="_blank" rel="noopener noreferrer" class="btn btn-primary mobile-register-btn" id="hero-mobile-register">Register Now</a>
     </div>
   </section>
 
