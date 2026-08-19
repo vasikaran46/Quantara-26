@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="fx8BMz5oez5cr_twXdx6aqCPkj9SNU-4wcla9HkwSNA" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M27L7E10VC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M27L7E10VC');
+  </script>
+  <title>Access Verification — Hackathon Problem Statements | QUANTARA '26</title>
+  <meta name="description" content="Enter your unique team access code to view the Cook the Code Hackathon problem statements at QUANTARA '26." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../logos/quantara-logo.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .verify-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: calc(var(--nav-h) + 2rem) var(--side-pad) 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .verify-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(0,212,255,0.1), transparent 65%),
+        radial-gradient(ellipse at 80% 80%, rgba(168,85,247,0.07), transparent 55%);
+      pointer-events: none;
+    }
+
+    .verify-card {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      width: 100%;
+      padding: 3rem 2.5rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .verify-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      margin: 0 auto 1.5rem;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.25);
+      box-shadow: 0 0 40px rgba(0,212,255,0.15), inset 0 0 20px rgba(0,212,255,0.05);
+      animation: icon-pulse 3s ease-in-out infinite;
+    }
+    @keyframes icon-pulse {
+      0%, 100% { box-shadow: 0 0 40px rgba(0,212,255,0.15), inset 0 0 20px rgba(0,212,255,0.05); }
+      50% { box-shadow: 0 0 60px rgba(0,212,255,0.25), inset 0 0 30px rgba(0,212,255,0.08); }
+    }
+
+    .verify-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .verify-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .code-input-group {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    .code-input {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      font-family: var(--font-sub);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--text-primary);
+      background: rgba(0,0,0,0.3);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      outline: none;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+    }
+    .code-input::placeholder {
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      font-weight: 400;
+      font-size: 0.95rem;
+      text-transform: none;
+    }
+    .code-input:focus {
+      border-color: rgba(0,212,255,0.5);
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.2), 0 0 20px rgba(0,212,255,0.1);
+    }
+
+    /* Error state */
+    .code-input.error {
+      border-color: #ff4d6a;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.2), 0 0 20px rgba(255,77,106,0.15);
+    }
+    .code-input.success {
+      border-color: #00e676;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.2), 0 0 20px rgba(0,230,118,0.15);
+    }
+
+    .error-message {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-family: var(--font-sub);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ff4d6a;
+      margin-bottom: 1.2rem;
+      padding: 0.5rem 0.8rem;
+      background: rgba(255,77,106,0.08);
+      border: 1px solid rgba(255,77,106,0.2);
+      border-radius: var(--radius-sm);
+    }
+    .error-message.visible {
+      display: flex;
+    }
+
+    .success-message {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      font-family: var(--font-sub);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #00e676;
+      margin-bottom: 1.2rem;
+      padding: 0.5rem 0.8rem;
+      background: rgba(0,230,118,0.08);
+      border: 1px solid rgba(0,230,118,0.2);
+      border-radius: var(--radius-sm);
+    }
+    .success-message.visible {
+      display: flex;
+    }
+
+    .unlock-btn {
+      width: 100%;
+      padding: 1rem;
+      font-family: var(--font-sub);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--gradient-brand);
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0,212,255,0.2), 0 4px 15px rgba(0,0,0,0.3);
+      min-height: 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    .unlock-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 35px rgba(0,212,255,0.4), 0 6px 20px rgba(0,0,0,0.4);
+    }
+    .unlock-btn:active {
+      transform: scale(0.98);
+    }
+    .unlock-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Shimmer effect on button */
+    .unlock-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255,255,255,0.1) 50%,
+        transparent 100%
+      );
+      transform: rotate(30deg) translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    .unlock-btn:hover::after {
+      transform: rotate(30deg) translateX(100%);
+    }
+
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--font-sub);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-top: 2rem;
+      transition: color 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .back-link:hover {
+      color: var(--cyan);
+    }
+
+    /* Shake animation for wrong code */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+      20%, 40%, 60%, 80% { transform: translateX(6px); }
+    }
+    .shake {
+      animation: shake 0.5s ease-in-out;
+    }
+
+    /* Locked overlay decoration */
+    .lock-particles {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(124,58,237,0.1));
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: -1;
+    }
+    .verify-card:hover .lock-particles {
+      opacity: 1;
+    }
+
+    @media (max-width: 500px) {
+      .verify-card {
+        padding: 2rem 1.5rem;
+      }
+      .code-input {
+        font-size: 1rem;
+        letter-spacing: 0.15em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <img src="../logos/quantara-logo.webp" alt="QUANTARA '26 Logo" class="nav-logo" />
+        <span class="nav-title">QUANTARA <span class="accent">'26</span></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" class="nav-link" id="nav-home">Home</a></li>
+        <li><a href="hackathon.html" class="nav-link" id="nav-about">Hackathon</a></li>
+        <li><a href="https://forms.gle/F56Jius7Eom4QaZ18" target="_blank" rel="noopener noreferrer" class="nav-link register-btn" id="nav-register">Register Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Verification Section -->
+  <section class="verify-hero">
+    <div class="verify-card">
+      <div class="lock-particles"></div>
+
+      <div class="verify-icon">🔐</div>
+      <h1 class="verify-title">Access Verification</h1>
+      <p class="verify-desc">Enter your unique team access code to view the hackathon problem statements.</p>
+
+      <div class="code-input-group">
+        <input
+          type="text"
+          id="accessCode"
+          class="code-input"
+          placeholder="Enter your access code"
+          maxlength="8"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+
+      <div class="error-message" id="errorMsg">
+        <span>⚠️</span>
+        <span>Invalid access code. Please check your code and try again.</span>
+      </div>
+
+      <div class="success-message" id="successMsg">
+        <span>✅</span>
+        <span>Access granted! Redirecting...</span>
+      </div>
+
+      <button class="unlock-btn" id="unlockBtn" type="button">
+        Unlock Problem Statements
+      </button>
+
+
+    </div>
+
+    <a href="hackathon.html" class="back-link">← Back to Hackathon</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div class="footer-college">
+          <img src="../logos/patrician-logo.webp" alt="Patrician College" class="footer-college-logo" />
+          <div>
+            <p>Patrician College of Arts and Science</p>
+            <p>Gandhi Nagar, Adyar, Chennai – 600020</p>
+          </div>
+          <img src="../logos/25-years.webp" alt="25 Years Celebrating Legacy" class="footer-anni-logo" />
+        </div>
+        <p class="footer-copy">© 2026 DEDOMENA — Department of Computer Science with Data Science. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+  <script>
+    // ══════════════════════════════════════════════════════════════
+    //  TEAM ACCESS CODES — SHA-256 HASHED
+    //  To update codes:
+    //  1. Open browser console on this page
+    //  2. Run: generateHash('YOUR_CODE')
+    //  3. Copy the hash and replace/add it in the array below
+    // ══════════════════════════════════════════════════════════════
+
+    // These are SHA-256 hashes of the placeholder codes.
+    // Placeholder codes: TEAM0001 through TEAM0030
+    // Replace these hashes with your own using the helper below.
+    const VALID_HASHES = [
+      'f6088ecef6ad5e22db574871cd1dad8640e00e2b0c281cf3d0898fade3f200f5', // TEAM0001
+      '9a5dec32b5b4cb3ab2d386121848de4aa2a82deb49993f0e14a990bde319e901', // TEAM0002
+      '50881852951106d250bcb4722296af95c0f3a79d106f9ca61074383227341a6c', // TEAM0003
+      '1597bec97feaef8b843e019314a51d867c91931568dc9c75cd01d41dc5f653ad', // TEAM0004
+      '48b87ff90f7515c245ad04c663dde8da42bb23eb1838f1968575b33d7ff93364', // TEAM0005
+      '738ebef1bd4d58469e1fa865e8c0189db2409e8a68f6d70c4acaba07e7329d47', // TEAM0006
+      '2f1938c1eb6e61a6c68c6a56038c2451c56e481c7b4f87f4014a07994999b23c', // TEAM0007
+      '886d6921f1194c95116c14e4d72b4d041f39b369d214de0a63ee3278828f811a', // TEAM0008
+      '2a4e13f681c03e50095c0d3ebb0eaf2e5e52aaa38249fd5d5adb0785ac611d01', // TEAM0009
+      '5b96eec067c43d0eda9e7e908bd1b2009da17840d1ad56ae58019c908755a64a', // TEAM0010
+      '57f30a63904057f575b13002e68df61503466414ffed8887a3bc441f7929e15a', // TEAM0011
+      'cfbcfecbea5bb778e4353964533decb7cb5e3e214e344b075fd030b3b0295820', // TEAM0012
+      'dc804483ed350ca4ae4af6315144a6348e9facf37b1f752a83bed1ba6e102c13', // TEAM0013
+      'aec2198d82f6cda659c9864672793626040cc6282c49ef0511aafe1f2995d1ed', // TEAM0014
+      'c66cfa5bd1d65c1a6a10a29992cbb8210d22f96bf3401463a517f5f5035a0394', // TEAM0015
+      'd80f3d247a7203e058ef507dd099a71eac11a697c163b6144b1233d998dac381', // TEAM0016
+      '2611a046b2ca9aec6c84ef6d58d04b64b50239226603c66253c734ed33ad7bed', // TEAM0017
+      'df93b0ef92352eef43e63e7c3346b15eaa386b8c6309fbbadd4542355cb09886', // TEAM0018
+      'd38c431499ccec46eb893b646bf26cefbacc2e2500ed98ad64530e3b976cc949', // TEAM0019
+      'af7474b31d1d90ad9f24cc9d2cc4994b5007e2f201bc2c733a60cb0010b99891', // TEAM0020
+      '07a3e71c5da59848bdf9744c6e8a0773a40e431ed6d0e2b96208d5bc0d32e4e1', // TEAM0021
+      'b6b336d7bca47d2c8aff2a5b36fc6111c557f6ba2ff59ad8b99d56002f4d271d', // TEAM0022
+      'b57b49f40c17650843d2bd6c9fb17e13ab8349ce4fa7d58de975f24c8ef4eb03', // TEAM0023
+      '5fca5e4ee6bfec929fad489debc920c686868c77fb48b2fe8579e9da25a15688', // TEAM0024
+      'b54557cc4844e857308699a72b991726ddc726af9f19e9a96e2030f4ccbd9faf', // TEAM0025
+      'a0ea7d28cb5477c848515fefe7e7a14db47a0846825ef93d6141b8cb9a25d018', // TEAM0026
+      '1708e858df3890c1821744e5163b230385f1125272f4d225b25fc97906b63976', // TEAM0027
+      'e48e14317e30ab448e69e3979563a698716157b11a2ba8d59fc2f71447612fd7', // TEAM0028
+      'a336ec72f3f184617d738d40ba90cea39ae40dd55c341d66955735954c5e9aaa', // TEAM0029
+      '2ddaf7ef2eec51cf3f4549147858d7f468c2851bbeae53bdf1be9f57ba4c0d95'  // TEAM0030
+    ];
+
+    // ── SHA-256 helper ──
+    async function sha256(message) {
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // ── Console helper: run generateHash('YOURCODE') to get the hash ──
+    window.generateHash = async function(code) {
+      const hash = await sha256(code.toUpperCase().trim());
+      console.log(`Code: "${code.toUpperCase().trim()}" → Hash: "${hash}"`);
+      console.log('Copy the hash above and add it to the VALID_HASHES array.');
+      return hash;
+    };
+
+    // ── Generate all hashes at once: run generateAllHashes(['CODE1','CODE2',...]) ──
+    window.generateAllHashes = async function(codes) {
+      console.log('\n══ Generated Hashes ══');
+      const hashes = [];
+      for (const code of codes) {
+        const hash = await sha256(code.toUpperCase().trim());
+        console.log(`  '${hash}', // ${code.toUpperCase().trim()}`);
+        hashes.push(hash);
+      }
+      console.log('\nCopy the hashes above into the VALID_HASHES array.');
+      return hashes;
+    };
+
+    // ── Verification Logic ──
+    const codeInput = document.getElementById('accessCode');
+    const unlockBtn = document.getElementById('unlockBtn');
+    const errorMsg = document.getElementById('errorMsg');
+    const successMsg = document.getElementById('successMsg');
+
+    async function verifyCode() {
+      const code = codeInput.value.toUpperCase().trim();
+
+      if (!code) {
+        codeInput.focus();
+        return;
+      }
+
+      const hash = await sha256(code);
+      const isValid = VALID_HASHES.includes(hash);
+
+      if (isValid) {
+        // Success
+        codeInput.classList.remove('error');
+        codeInput.classList.add('success');
+        errorMsg.classList.remove('visible');
+        successMsg.classList.add('visible');
+        unlockBtn.disabled = true;
+        codeInput.disabled = true;
+
+        // Store verification in sessionStorage
+        sessionStorage.setItem('q26_verified', 'true');
+
+        // Redirect after brief delay for visual feedback
+        setTimeout(() => {
+          window.location.href = 'problem-statement.html';
+        }, 1200);
+      } else {
+        // Failed — show error with shake
+        codeInput.classList.add('error');
+        codeInput.classList.add('shake');
+        errorMsg.classList.add('visible');
+        successMsg.classList.remove('visible');
+
+        // Remove shake after animation
+        setTimeout(() => {
+          codeInput.classList.remove('shake');
+        }, 500);
+      }
+    }
+
+    // Button click
+    unlockBtn.addEventListener('click', verifyCode);
+
+    // Enter key
+    codeInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        verifyCode();
+      }
+    });
+
+    // Clear error on typing
+    codeInput.addEventListener('input', () => {
+      codeInput.classList.remove('error');
+      errorMsg.classList.remove('visible');
+    });
+
+    // If already verified, redirect immediately
+    if (sessionStorage.getItem('q26_verified') === 'true') {
+      window.location.href = 'problem-statement.html';
+    }
+  </script>
+</body>
+</html>

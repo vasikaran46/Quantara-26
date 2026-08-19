@@ -12,163 +12,165 @@
     gtag('js', new Date());
     gtag('config', 'G-M27L7E10VC');
   </script>
-  <title>Hackathon Problem Statement Release — Live Countdown | QUANTARA '26</title>
-  <meta name="description" content="Get ready for the Cook the Code Hackathon at QUANTARA '26! Countdown to the official problem statement release for our premier tech symposium in Chennai." />
+  <title>Hackathon Problem Statements | QUANTARA '26</title>
+  <meta name="description" content="View the official problem statements for the Cook the Code Hackathon at QUANTARA '26." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="../logos/quantara-logo.png" />
   <link rel="stylesheet" href="../style.css" />
   <style>
-    .countdown-hero {
+    .statements-hero {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: calc(var(--nav-h) + 2rem) var(--side-pad) 4rem;
+      padding: calc(var(--nav-h) + 3rem) var(--side-pad) 4rem;
       position: relative;
       overflow: hidden;
     }
-    .countdown-hero::before {
+    .statements-hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 50% 20%, rgba(0,212,255,0.1), transparent 65%),
-        radial-gradient(ellipse at 80% 80%, rgba(168,85,247,0.07), transparent 55%);
+        radial-gradient(ellipse at 50% 20%, rgba(0,212,255,0.05), transparent 65%),
+        radial-gradient(ellipse at 80% 80%, rgba(168,85,247,0.04), transparent 55%);
       pointer-events: none;
     }
-    
-    .countdown-card {
+
+    .statements-header {
+      text-align: center;
+      margin-bottom: 3rem;
       position: relative;
       z-index: 1;
-      max-width: 800px;
-      width: 100%;
-      padding: 3rem 2rem;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-xl);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.05);
-      animation: float 6s ease-in-out infinite;
     }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .countdown-title {
+    .statements-title {
       font-family: var(--font-heading);
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 800;
       color: var(--text-primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
-    .countdown-desc {
+    .statements-desc {
       font-size: 1.1rem;
       color: var(--text-secondary);
-      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .timer-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-      margin-bottom: 3rem;
-    }
-
-    .time-box {
+    .statements-grid {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: clamp(80px, 15vw, 120px);
-      height: clamp(90px, 16vw, 130px);
-      background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(0,212,255,0.15);
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .statement-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: var(--radius-lg);
-      box-shadow: inset 0 0 20px rgba(0,212,255,0.05);
+      padding: 1.5rem 2rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
       position: relative;
       overflow: hidden;
     }
-    .time-box::after {
+    
+    .statement-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; height: 50%;
-      background: rgba(255,255,255,0.03);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .time-value {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 700;
-      background: var(--gradient-brand);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1;
-      z-index: 2;
-    }
-    .time-label {
-      font-family: var(--font-sub);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 0.5rem;
-      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--cyan, #00d4ff), var(--purple, #7c3aed));
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .info-strip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: linear-gradient(135deg, rgba(0,212,255,0.05), rgba(124,58,237,0.08));
-      border: 1px solid rgba(168,85,247,0.25);
-      border-radius: var(--radius-md);
-      font-family: var(--font-heading);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      letter-spacing: 0.05em;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.02);
-      transition: all 0.3s ease;
-    }
-    .info-strip:hover {
+    .statement-card:hover {
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
       border-color: rgba(0,212,255,0.4);
-      background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(124,58,237,0.12));
-      transform: translateY(-2px);
+      transform: translateX(10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,212,255,0.05);
+    }
+    
+    .statement-card:hover::before {
+      opacity: 1;
+    }
+    
+    .statement-number {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--cyan, #00d4ff), var(--purple, #7c3aed));
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      line-height: 1;
+      padding-bottom: 4px;
+      box-sizing: border-box;
+    }
+    
+    .statement-text {
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-weight: 500;
+      letter-spacing: 0.3px;
     }
 
-    @media (max-width: 500px) {
-      .timer-container {
-        display: flex;
-        flex-wrap: nowrap;
-        gap: 0.4rem;
-        justify-content: center;
+    @media (max-width: 768px) {
+      .statement-card {
+        padding: 1.2rem;
+        gap: 1rem;
+        align-items: flex-start;
       }
-      .time-box {
-        width: clamp(60px, 22vw, 75px);
-        height: clamp(70px, 26vw, 85px);
-        padding: 0.2rem;
+      .statement-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+        border-radius: 10px;
       }
-      .time-value {
-        font-size: clamp(1.3rem, 5vw, 1.6rem);
+      .statement-text {
+        font-size: 1rem;
       }
-      .time-label {
-        font-size: 0.55rem;
-        letter-spacing: 0.05em;
+      .statement-card:hover {
+        transform: translateY(-5px);
       }
+    }
+
+    .back-btn-container {
+      margin-top: 4rem;
+      position: relative;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
+
+  <!-- Access Protection: redirect unverified users to the verification page -->
+  <script>
+    if (sessionStorage.getItem('q26_verified') !== 'true') {
+      window.location.href = 'verify-access.html';
+    }
+  </script>
 
   <canvas id="particleCanvas"></canvas>
 
@@ -192,40 +194,98 @@
     </div>
   </nav>
 
-  <!-- Countdown Section -->
-  <div id="about"></div>
-  <section class="countdown-hero" id="rules">
-    <div class="countdown-card" id="coordinators">
-      <h1 class="countdown-title">Problem Statement</h1>
-      <p class="countdown-desc">The Hackathon problem statement is brewing. Check back when the timer hits zero!</p>
-      
-      <div class="timer-container" id="countdownTimer">
-        <div class="time-box">
-          <span class="time-value" id="days">00</span>
-          <span class="time-label">Days</span>
-        </div>
-        <div class="time-box">
-          <span class="time-value" id="hours">00</span>
-          <span class="time-label">Hours</span>
-        </div>
-        <div class="time-box">
-          <span class="time-value" id="minutes">00</span>
-          <span class="time-label">Minutes</span>
-        </div>
-        <div class="time-box">
-          <span class="time-value" id="seconds">00</span>
-          <span class="time-label">Seconds</span>
-        </div>
+  <!-- Statements Section -->
+  <section class="statements-hero" id="statements">
+    <div class="statements-header">
+      <h1 class="statements-title">Hackathon Problem Statements</h1>
+      <p class="statements-desc">Choose from our curated list of 20 problem statements. Build innovative solutions that create real-world impact!</p>
+    </div>
+
+    <div class="statements-grid">
+      <div class="statement-card">
+        <div class="statement-number">1</div>
+        <div class="statement-text">Smart Community Health Monitoring and Early Warning System for Water-Borne Diseases in Rural Areas</div>
       </div>
-      
-      <div class="info-strip">
-        <span>📅</span>
-        <span>August 21, 2026 @ 11:00 AM</span>
+      <div class="statement-card">
+        <div class="statement-number">2</div>
+        <div class="statement-text">Smart Tourist Safety Monitoring and Incident Response System using AI, Geo-Fencing, and Blockchain-based Digital ID</div>
       </div>
-      
-      <div style="margin-top: 2rem;">
-        <a href="hackathon.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.75rem 1.5rem;">← Back to Hackathon Rules</a>
+      <div class="statement-card">
+        <div class="statement-number">3</div>
+        <div class="statement-text">Disaster Preparedness and Response Education System for Schools and Colleges</div>
       </div>
+      <div class="statement-card">
+        <div class="statement-number">4</div>
+        <div class="statement-text">Gamified Environmental Education Platform for Schools and Colleges</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">5</div>
+        <div class="statement-text">Smart Crop Advisory System for Small and Marginal Farmers</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">6</div>
+        <div class="statement-text">Real-Time Public Transport Tracking System for Small Cities</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">7</div>
+        <div class="statement-text">Telemedicine Access for Rural Healthcare</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">8</div>
+        <div class="statement-text">Smart Classroom and Timetable Scheduler</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">9</div>
+        <div class="statement-text">Authenticity Validator for Academia</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">10</div>
+        <div class="statement-text">Crowdsourced Civic Issue Reporting and Resolution System</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">11</div>
+        <div class="statement-text">AI-Based Smart Allocation Engine for Internship Management</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">12</div>
+        <div class="statement-text">AI-Based Internship Recommendation Engine</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">13</div>
+        <div class="statement-text">AI-Powered Crop Yield Prediction and Optimization</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">14</div>
+        <div class="statement-text">AI-Driven Public Health Chatbot for Disease Awareness</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">15</div>
+        <div class="statement-text">Smart Traffic Management System for Urban Congestion</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">16</div>
+        <div class="statement-text">AI-Powered Mobile Platform for Sports Talent Assessment</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">17</div>
+        <div class="statement-text">AI-Based Farmer Query Support and Advisory System</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">18</div>
+        <div class="statement-text">Digital Health Record Management System for Migrant Workers</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">19</div>
+        <div class="statement-text">Digital Mental Health and Psychological Support System for Students</div>
+      </div>
+      <div class="statement-card">
+        <div class="statement-number">20</div>
+        <div class="statement-text">Language-Agnostic AI Chatbot</div>
+      </div>
+    </div>
+
+    <div class="back-btn-container">
+      <a href="hackathon.html" class="btn btn-primary" style="font-size: 0.9rem; padding: 0.75rem 1.5rem;">← Back to Hackathon Rules</a>
     </div>
   </section>
 
@@ -247,32 +307,6 @@
   </footer>
 
   <script src="../script.js"></script>
-  <script>
-    // Countdown Timer Logic
-    const targetDate = new Date('August 21, 2026 11:00:00').getTime();
 
-    const updateTimer = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference <= 0) {
-        document.getElementById('countdownTimer').innerHTML = '<h2 style="font-family: var(--font-heading); color: var(--cyan); font-size: 2rem; margin: 2rem 0;">The Problem Statement is Live!</h2>';
-        return;
-      }
-
-      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      document.getElementById('days').textContent = days.toString().padStart(2, '0');
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-    };
-
-    setInterval(updateTimer, 1000);
-    updateTimer(); // Initial call
-  </script>
 </body>
 </html>
