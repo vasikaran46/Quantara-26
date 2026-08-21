@@ -132,7 +132,7 @@
     }
     .quick-info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 0.85rem;
       max-width: 860px;
       margin: 0 auto;
@@ -583,8 +583,13 @@
       <div class="event-hero-icon"><img src="../logos/hackathon.png" alt="Cook the Code" class="event-hero-icon-img" /></div>
       <h1 class="event-hero-title">Cook the Code</h1>
       <p class="event-hero-subtitle">Hackathon</p>
-      <p class="event-hero-desc">Design innovative real-world solutions, build a working prototype, and showcase your skills before expert judges.</p>
+      <p class="event-hero-desc">Design innovative real-world solutions, build a working prototype, and showcase your skills before expert judges. <strong>Cash prizes</strong> await the winners!</p>
       <p class="event-hero-subtitle" style="margin-top:0.75rem">🚀 Build. Innovate. Win.</p>
+      <div class="hero-badge-strip">
+        <span class="hero-badge">🏆 Cash Prizes</span>
+        <span class="hero-badge">📋 Problem Statements Live</span>
+        <span class="hero-badge" style="background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.3);color:rgba(245,178,60,1)">⏰ Registration closes Aug 27</span>
+      </div>
       <a href="https://forms.gle/F56Jius7Eom4QaZ18" target="_blank" rel="noopener noreferrer" class="btn btn-primary mobile-register-btn" id="hero-mobile-register">Register Now</a>
     </div>
   </section>
@@ -612,6 +617,16 @@
         <span class="qi-label">Registration Fee</span>
         <span class="qi-value">₹300 per team</span>
       </div>
+      <div class="qi-card glass-card" style="border-color:rgba(245,158,11,0.25);background:linear-gradient(135deg,rgba(245,158,11,0.08),rgba(245,158,11,0.03))">
+        <span class="qi-icon">🔒</span>
+        <span class="qi-label">Registration Closes</span>
+        <span class="qi-value">Aug 27 · 5:00 PM</span>
+      </div>
+      <div class="qi-card glass-card" style="border-color:rgba(16,185,129,0.25);background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(16,185,129,0.03))">
+        <span class="qi-icon">🏆</span>
+        <span class="qi-label">Prizes</span>
+        <span class="qi-value">Cash Prizes</span>
+      </div>
     </div>
   </section>
 
@@ -619,11 +634,29 @@
   <div class="rules-content" id="rules">
 
     <!-- Important Notice -->
+    <div class="notice-card" style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; border-color: rgba(16,185,129,0.25); background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));">
+      <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+        <span class="notice-icon">✅</span>
+        <p class="notice-text">
+          <strong style="color:rgba(16,185,129,0.9)">Problem Statements Released!</strong> The official problem statements are now <strong>LIVE</strong>. <a href="problem-statement.html" style="color:var(--cyan);text-decoration:underline">View all 20 problem statements here →</a>. Teams must arrive on the event day with a <strong>fully completed prototype</strong> ready for demonstration and evaluation.
+        </p>
+      </div>
+    </div>
+
     <div class="notice-card" style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
       <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
-        <span class="notice-icon">⚠️</span>
+        <span class="notice-icon">⏰</span>
         <p class="notice-text">
-          <strong>Problem Statement Release:</strong> The problem statement will be released on <strong>August 21, 2026</strong> at <strong>11:00 AM</strong> on this website. Teams must arrive on the event day with a <strong>fully completed prototype</strong> ready for demonstration and evaluation.
+          <strong>Registration Deadline:</strong> Registration will be <strong>closed on August 27, 2026</strong> at <strong>5:00 PM</strong>. Make sure your team registers before the deadline!
+        </p>
+      </div>
+    </div>
+
+    <div class="notice-card" style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; border-color: rgba(168,85,247,0.25); background: linear-gradient(135deg, rgba(168,85,247,0.06), rgba(168,85,247,0.02));">
+      <div style="display: flex; gap: 0.85rem; align-items: flex-start;">
+        <span class="notice-icon">🏆</span>
+        <p class="notice-text">
+          <strong style="color:rgba(168,85,247,0.9)">Cash Prizes!</strong> Winners of the Cook the Code hackathon will receive <strong>cash prizes</strong>. Showcase your best work and stand a chance to win!
         </p>
       </div>
     </div>
@@ -636,7 +669,8 @@
       </h2>
       <ol class="rules-list">
         <li><span class="rule-text">Each team must consist of <strong>2 – 4 members</strong>.</span></li>
-        <li><span class="rule-text">The official problem statement will be released on <strong>August 21, 2026</strong> at <strong>11 AM</strong> on this website.</span></li>
+        <li><span class="rule-text">The official problem statements have been <strong>released</strong>. <a href="problem-statement.html" style="color:var(--cyan);text-decoration:underline">View them here</a>.</span></li>
+        <li><span class="rule-text">Registration closes on <strong>August 27, 2026</strong> at <strong>5:00 PM</strong>. Register before the deadline.</span></li>
         <li><span class="rule-text">Teams must arrive <strong>before 8:30 AM</strong> for registration and verification.</span></li>
         <li><span class="rule-text">Each team must bring a <strong>fully completed prototype</strong> based on the released problem statement.</span></li>
         <li><span class="rule-text">The prototype should be <strong>ready for demonstration</strong> and evaluation.</span></li>
@@ -696,10 +730,15 @@
         Event Timeline
       </h2>
       <div class="timeline-wrap">
-        <div class="timeline-item">
-          <span class="tl-time">August 21, 2026 · 11:00 AM</span>
-          <div class="tl-title">Problem Statement Released</div>
-          <div class="tl-desc">The official problem statement goes live on this website. Start building your prototype.</div>
+        <div class="timeline-item" style="border-color:rgba(16,185,129,0.25);background:rgba(16,185,129,0.04)">
+          <span class="tl-time">August 21, 2026 · 11:00 AM ✅</span>
+          <div class="tl-title">Problem Statements Released</div>
+          <div class="tl-desc">The official problem statements are now <strong>LIVE</strong>! <a href="problem-statement.html" style="color:var(--cyan)">View all 20 statements →</a></div>
+        </div>
+        <div class="timeline-item" style="border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.04)">
+          <span class="tl-time">August 27, 2026 · 5:00 PM</span>
+          <div class="tl-title">Registration Closes</div>
+          <div class="tl-desc">Last date to register your team for Cook the Code. Don't miss out!</div>
         </div>
         <div class="timeline-item">
           <span class="tl-time">August 28, 2026 · Before 8:30 AM</span>
@@ -808,9 +847,9 @@
   <section class="event-cta">
     <div class="cta-card glass-card">
       <h2 class="cta-title">Ready to <span class="gradient-text">Build?</span></h2>
-      <p class="cta-desc">Register your team now and get ready to cook some code at QUANTARA '26!</p>
+      <p class="cta-desc">Problem statements are live! Register before <strong>August 27, 5:00 PM</strong> and win <strong>cash prizes</strong>!</p>
       <div class="cta-actions">
-        <a href="problem-statement-time.html" class="btn btn-primary" style="flex: 1; min-width: 220px; max-width: 280px; justify-content: center;">Problem Statement</a>
+        <a href="problem-statement.html" class="btn btn-primary" style="flex: 1; min-width: 220px; max-width: 280px; justify-content: center;">Problem Statements</a>
         <a href="https://forms.gle/F56Jius7Eom4QaZ18" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="flex: 1; min-width: 220px; max-width: 280px; justify-content: center;">Register Now</a>
       </div>
     </div>
